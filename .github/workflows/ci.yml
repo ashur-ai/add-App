@@ -32,8 +32,11 @@ jobs:
         run: |
           pytest --junitxml=reports/test_results.xml
           
+      - name: List files to check report location
+        run: ls -R reports
+
       - name: Upload test results to GitHub Actions
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2  # Try using v2 if v3 is failing
         with:
           name: pytest-results
           path: reports/test_results.xml
