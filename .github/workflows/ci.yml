@@ -28,9 +28,11 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
+      - name: Ensure reports folder exists
+        run: mkdir -p reports
+
       - name: Run tests and generate report
-        run: |
-          pytest --junitxml=reports/test_results.xml
+        run: pytest --junitxml=reports/test_results.xml
 
       - name: List files to check report location
         run: ls -R reports
