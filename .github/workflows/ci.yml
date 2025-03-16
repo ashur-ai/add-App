@@ -10,7 +10,6 @@ on:
 
 jobs:
   integration:
-    name: Continuous Integration
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +37,7 @@ jobs:
         run: ls -R reports
 
       - name: Upload test results to GitHub Actions
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2.3.1
         with:
           name: pytest-results
           path: reports/test_results.xml
