@@ -1,6 +1,4 @@
-# .github/workflows/ci.yml
-
-name: CI Workflow
+name: Continuous Integration
 
 on:
   push:
@@ -14,21 +12,28 @@ jobs:
   integration:
     name: Continuous Integration
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.12'  # Adjust Python version if needed
+          python-version: 3.8
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest
 
-      - name: Run unit tests with pytest
+      - name: Run tests and generate report
         run: |
-          export PYTHONPATH=$(pwd)  # Ensure Python can find the module
-          pytest --verbose
+          pytest --junitxml=reports/test_results.xml
+          
+      - name: Upload test results to GitHub Actions
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-results
+          path: reports/test_results.xml
