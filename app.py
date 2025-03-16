@@ -1,13 +1,16 @@
-import streamlit as st
+# streamlit_app.py
 
-# Streamlit app title
+import streamlit as st
+from calculator import add_numbers  # Import the add_numbers function
+
 st.title("Simple Addition App")
 
-# User input for two numbers
-num1 = st.number_input("Enter first number:", value=0.0)
-num2 = st.number_input("Enter second number:", value=0.0)
+# Get input numbers
+num1 = st.number_input("Enter first number", value=0.0)
+num2 = st.number_input("Enter second number", value=0.0)
 
-# Button to add numbers
-if st.button("Add"):
-    result = num1 + num2
-    st.success(f"The sum is: {result}")
+# Calculate sum using the function from calculator.py
+sum_result = add_numbers(num1, num2)
+
+# Display result
+st.write(f"The sum of {num1} and {num2} is {sum_result}")
