@@ -58,6 +58,11 @@ Now, every time you modify the code and push changes using Git, the application 
 ## **Contributing**
 Feel free to contribute by opening issues or submitting pull requests.
 
+
+how to make changes
+go to open file then documents open add-app in vs code
+then make changes
+
 ## **Author**
-Ashur Raju Addanki (@ashur-ai)
+Ashur Addanki (@ashur-ai)
 
